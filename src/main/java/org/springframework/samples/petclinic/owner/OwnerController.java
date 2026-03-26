@@ -95,30 +95,28 @@ class OwnerController {
 	public String processFindForm(@RequestParam(defaultValue = "1") int page, Owner owner, BindingResult result,
 			Model model) {
 		// allow parameterless GET request for /owners to return all records
-		if(1==1){
-			throw new IllegalArgumentException("ERROR");
-		}
-		String lastName = owner.getLastName();
-		if (lastName == null) {
-			lastName = ""; // empty string signifies broadest possible search
-		}
-
-		// find owners by last name
-		Page<Owner> ownersResults = findPaginatedForOwnersLastName(page, lastName);
-		if (ownersResults.isEmpty()) {
-			// no owners found
-			result.rejectValue("lastName", "notFound", "not found");
-			return "owners/findOwners";
-		}
-
-		if (ownersResults.getTotalElements() == 1) {
-			// 1 owner found
-			owner = ownersResults.iterator().next();
-			return "redirect:/owners/" + owner.getId();
-		}
-
-		// multiple owners found
-		return addPaginationModel(page, model, ownersResults);
+		throw new IllegalArgumentException("ERROR");
+//		String lastName = owner.getLastName();
+//		if (lastName == null) {
+//			lastName = ""; // empty string signifies broadest possible search
+//		}
+//
+//		// find owners by last name
+//		Page<Owner> ownersResults = findPaginatedForOwnersLastName(page, lastName);
+//		if (ownersResults.isEmpty()) {
+//			// no owners found
+//			result.rejectValue("lastName", "notFound", "not found");
+//			return "owners/findOwners";
+//		}
+//
+//		if (ownersResults.getTotalElements() == 1) {
+//			// 1 owner found
+//			owner = ownersResults.iterator().next();
+//			return "redirect:/owners/" + owner.getId();
+//		}
+//
+//		// multiple owners found
+//		return addPaginationModel(page, model, ownersResults);
 	}
 
 	private String addPaginationModel(int page, Model model, Page<Owner> paginated) {
