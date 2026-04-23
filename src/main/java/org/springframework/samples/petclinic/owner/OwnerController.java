@@ -96,6 +96,9 @@ class OwnerController {
 			Model model) {
 		// allow parameterless GET request for /owners to return all records
 
+		if(1==1){
+			throw new IllegalArgumentException("ERROR");
+		}
 		String lastName = owner.getLastName();
 		if (lastName == null) {
 			lastName = ""; // empty string signifies broadest possible search
